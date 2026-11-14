@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Auto Shorts</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header>
+    <div class="brand">✂️ <b>Auto Shorts</b><span>De la longue vidéo aux shorts, en un clic</span></div>
+    <div class="accounts">
+      <div class="account" id="acc-youtube"></div>
+      <div class="account" id="acc-tiktok"></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="card new">
+      <h1>Nouvelle vidéo</h1>
+      <div class="tabs">
+        <button class="tab active" data-tab="link">Lien YouTube</button>
+        <button class="tab" data-tab="file">Fichier sur mon ordinateur</button>
+      </div>
+      <form id="form">
+        <div class="tab-pane" data-pane="link">
+          <input id="url" type="url" placeholder="Colle ici le lien de la vidéo YouTube (https://www.youtube.com/watch?v=…)">
+        </div>
+        <div class="tab-pane hidden" data-pane="file">
+          <input id="file" type="file" accept="video/*">
+        </div>
+        <div class="row">
+          <label>Nombre de shorts : <b id="count-val">8</b>
+            <input id="count" type="range" min="5" max="15" value="8">
+          </label>
+          <label>Langue de la vidéo :
+            <select id="language">
+              <option value="">Détection automatique</option>
+              <option value="fr">Français</option>
+              <option value="en">Anglais</option>
+              <option value="ar">Arabe</option>
+              <option value="es">Espagnol</option>
+            </select>
+          </label>
+          <button type="submit" class="primary">Créer mes shorts ✨</button>
+        </div>
+      </form>
+      <p class="hint" id="ai-hint"></p>
+    </section>
+
+    <section id="current"></section>
+
+    <section class="card">
+      <h2>Mes projets</h2>
+      <div id="jobs" class="jobs"></div>
+    </section>
+
+    <p class="legal">Utilise uniquement des vidéos dont tu possèdes les droits (tes propres vidéos ou avec l'accord de l'auteur).</p>
+  </main>
+
+  <template id="clip-tpl">
+    <article class="clip">
+      <div class="player"><video controls preload="metadata" playsinline></video><span class="badge"></span></div>
+      <div class="meta">
+        <label>Titre<input class="title" maxlength="100"></label>
+        <label>Description<textarea class="description" rows="3"></textarea></label>
+        <label>Hashtags (séparés par des espaces)<input class="hashtags"></label>
+        <p class="reason"></p>
+        <div class="actions">
+          <button class="save">💾 Enregistrer</button>
+          <a class="download" download>⬇️ Télécharger</a>
+        </div>
+        <div class="publish">
+          <div class="pub yt">
+            <select class="yt-privacy">
+              <option value="public">Public</option>
+              <option value="unlisted">Non répertorié</option>
+              <option value="private">Privé</option>
+            </select>
+            <button class="yt-btn">▶️ Publier sur YouTube Shorts</button>
+            <span class="yt-status"></span>
+          </div>
+          <div class="pub tt">
+            <select class="tt-privacy"></select>
+            <button class="tt-btn">🎵 Publier sur TikTok</button>
+            <span class="tt-status"></span>
+          </div>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
