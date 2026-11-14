@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+data/
+.env
+client_secret.json
+.DS_Store
